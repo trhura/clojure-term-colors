@@ -1,9 +1,13 @@
-# clojure-colors
+# clojure-term-colors
 
 A Clojure library for ASCII terminal color output, based on python
 termcolor package
 
+![Screenshot](doc/info.png)
+
 ## Usage
+
+![Example](doc/example.png)
 
 ## Available Functions
 
