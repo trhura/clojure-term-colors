@@ -1,11 +1,11 @@
-(ns clojure.cli.colors-test
+(ns clojure.term.colors-test
   (:require [clojure.test :refer :all]
-            [clojure.cli.colors :refer :all]))
+            [clojure.term.colors :refer :all]))
 
 (defn get-fn
-  "get function from symbol in clojure.cli.colors package"
+  "get function from symbol in clojure.term.colors package"
   [fname]
-  (ns-resolve (the-ns 'clojure.cli.colors)
+  (ns-resolve (the-ns 'clojure.term.colors)
               (-> fname name symbol)))
 
 (defn test-colors-from-map

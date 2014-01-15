@@ -1,4 +1,4 @@
-(ns clojure.cli.colors)
+(ns clojure.term.colors)
 
 (defn- escape-code
   [i]
@@ -6,7 +6,6 @@
 
 (def colors
   "foreground color map"
-
   (zipmap [:grey :red :green :yellow
            :blue :magenta :cyan :white]
           (map escape-code
@@ -14,7 +13,6 @@
 
 (def highlights
   "background color map"
-
   (zipmap [:on-grey :on-red :on-green :on-yellow
            :on-blue :on-magenta :on-cyan :on-white]
           (map escape-code
@@ -22,7 +20,6 @@
 
 (def attributes
   "attributes color map"
-
   (into {}
         (remove #(nil? (key %))
                 (zipmap [:bold, :dark, nil, :underline,
@@ -35,7 +32,6 @@
   "define a function `fname' which wraps its arguments with
         corresponding `color' codes"
   [fname color]
-
   (let [fname (symbol (name fname))
         args (symbol 'args)]
     `(defn ~fname [& ~args]
@@ -44,7 +40,6 @@
 (defn define-color-functions-from-map
   "define functions from color maps."
   [colormap]
-
   (eval `(do ~@(map (fn [[color escape-code]]
                 `(println ~color ~escape-code)
                 `(define-color-function ~color ~escape-code))
