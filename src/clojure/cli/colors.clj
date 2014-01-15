@@ -24,7 +24,7 @@
   "attributes color map"
 
   (into {}
-        (remove #(= (key %) nil)
+        (remove #(nil? (key %))
                 (zipmap [:bold, :dark, nil, :underline,
                          :blink, nil, :reverse-color, :concealed]
                         (map escape-code (range 1 9))))))
