@@ -21,7 +21,7 @@
 (def attributes
   "attributes color map"
   (into {}
-        (remove #(nil? (key %))
+        (filter (comp not nil? key)
                 (zipmap [:bold, :dark, nil, :underline,
                          :blink, nil, :reverse-color, :concealed]
                         (map escape-code (range 1 9))))))
@@ -35,7 +35,7 @@
   (let [fname (symbol (name fname))
         args (symbol 'args)]
     `(defn ~fname [& ~args]
-       (str (apply str (map #(str ~color %) ~args)) ~reset))))
+       (str (clojure.string/join (map #(str ~color %) ~args)) ~reset))))
 
 (defn define-color-functions-from-map
   "define functions from color maps."
