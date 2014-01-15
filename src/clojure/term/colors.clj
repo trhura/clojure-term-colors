@@ -35,7 +35,7 @@
   (let [fname (symbol (name fname))
         args (symbol 'args)]
     `(defn ~fname [& ~args]
-       (str (reduce str (map #(str ~color %) ~args)) ~reset))))
+       (str (apply str (map #(str ~color %) ~args)) ~reset))))
 
 (defn define-color-functions-from-map
   "define functions from color maps."
