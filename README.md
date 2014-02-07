@@ -9,6 +9,9 @@ termcolor package
 
 ![Example](doc/example.png)
 
+** You can also set the `*disable-colors*` flag variable if you want
+to disable colors temporarily. **
+
 ## Available Functions
 
 ```

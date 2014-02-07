@@ -4,21 +4,21 @@
   [i]
   (str "\033[" i "m"))
 
-(def colors
+(def ^:dynamic *colors*
   "foreground color map"
   (zipmap [:grey :red :green :yellow
            :blue :magenta :cyan :white]
           (map escape-code
                (range 30 38))))
 
-(def highlights
+(def ^:dynamic *highlights*
   "background color map"
   (zipmap [:on-grey :on-red :on-green :on-yellow
            :on-blue :on-magenta :on-cyan :on-white]
           (map escape-code
             (range 40 48))))
 
-(def attributes
+(def ^:dynamic *attributes*
   "attributes color map"
   (into {}
         (filter (comp not nil? key)
@@ -26,7 +26,11 @@
                          :blink, nil, :reverse-color, :concealed]
                         (map escape-code (range 1 9))))))
 
-(def reset (escape-code 0))
+(def ^:dynamic *reset* (escape-code 0))
+
+;; Bind to true to have the colorize functions not apply coloring to
+;; their arguments.
+(def ^:dynamic *disable-colors* nil)
 
 (defmacro define-color-function
   "define a function `fname' which wraps its arguments with
@@ -35,7 +39,9 @@
   (let [fname (symbol (name fname))
         args (symbol 'args)]
     `(defn ~fname [& ~args]
-       (str (clojure.string/join (map #(str ~color %) ~args)) ~reset))))
+       (if-not *disable-colors*
+         (str (clojure.string/join (map #(str ~color %) ~args)) ~*reset*)
+         (apply str ~args)))))
 
 (defn define-color-functions-from-map
   "define functions from color maps."
@@ -45,6 +51,6 @@
                 `(define-color-function ~color ~escape-code))
                     colormap))))
 
-(define-color-functions-from-map colors)
-(define-color-functions-from-map highlights)
-(define-color-functions-from-map attributes)
+(define-color-functions-from-map *colors*)
+(define-color-functions-from-map *highlights*)
+(define-color-functions-from-map *attributes*)
