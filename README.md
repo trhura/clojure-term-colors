@@ -5,13 +5,15 @@ termcolor package
 
 ![Screenshot](doc/info.png)
 
-## Usage
+## Leiningen
 
-__Leiningen ([via Clojars](https://clojars.org/clojure-term-colors))__
+__([via Clojars](https://clojars.org/clojure-term-colors))__
 
 ```
 [clojure-term-colors "0.1.0-SNAPSHOT"]
 ```
+
+## Usage
 
 ![Example](doc/example.png)
 
