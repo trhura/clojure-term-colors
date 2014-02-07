@@ -7,6 +7,12 @@ termcolor package
 
 ## Usage
 
+__Leiningen ([via Clojars](https://clojars.org/clojure-term-colors))__
+
+```
+[clojure-term-colors "0.1.0-SNAPSHOT"]
+```
+
 ![Example](doc/example.png)
 
 _You can also set the `*disable-colors*` flag variable (using binding) if you want
