@@ -9,8 +9,8 @@ termcolor package
 
 ![Example](doc/example.png)
 
-** You can also set the `*disable-colors*` flag variable if you want
-to disable colors temporarily. **
+_You can also set the `*disable-colors*` flag variable (using binding) if you want
+to disable colors temporarily._
 
 ## Available Functions
 
