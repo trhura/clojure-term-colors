@@ -1,4 +1,4 @@
-(defproject clojure-term-colors "0.1.0-SNAPSHOT"
+(defproject clojure-term-colors "0.1.0"
   :description "clojure ASCII color formatting for terminal output"
   :url "https://github.com/trhura/clojure-colors"
   :license {:name "Eclipse Public License"
