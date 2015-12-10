@@ -9,9 +9,7 @@ termcolor package
 
 __([via Clojars](https://clojars.org/clojure-term-colors))__
 
-```
-[clojure-term-colors "0.1.0-SNAPSHOT"]
-```
+[![Clojars Project](http://clojars.org/clojure-term-colors/latest-version.svg)]
 
 ## Usage
 
